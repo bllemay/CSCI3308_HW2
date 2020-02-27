@@ -160,7 +160,15 @@ function reset_play()
 
 	// Reset the TicTacToe grid
 	board_state = [-1,-1,-1,-1,-1,-1,-1,-1,-1];
-	table_ids = ["A1", "A2", "A3", "B1", "B2", "B3", "C1", "C2", "C3"];
+	document.getElementById("A1").innerHTML = "A1";
+	document.getElementById("A2").innerHTML = "A2";
+	document.getElementById("A3").innerHTML = "A3";
+	document.getElementById("B1").innerHTML = "B1";
+	document.getElementById("B2").innerHTML = "B2";
+	document.getElementById("B3").innerHTML = "B3";
+	document.getElementById("C1").innerHTML = "C1";
+	document.getElementById("C2").innerHTML = "C2";
+	document.getElementById("C3").innerHTML = "C3";
 }
 
 /*
@@ -180,7 +188,97 @@ The method should do all the things as stated in rule 2.
 */
 function play()
 {
+	// Variables for elements used
+	player1 = document.getElementById("player1_id");
+	player2 = document.getElementById("player2_id");
+	turnText = document.getElementById("turn_info");
+	move = document.getElementById("move_text_id");
+	moveInput = move.value;
+	moveIndex = -1;
+	winMessage = "Winner is: "
 
+	// Check if the game has started
+	if(!game_started())
+	{
+		// If the game hasn't started, alert and return
+		alert("The game has not started.");
+		return;
+	}
+
+	// Validate the move input
+	var valid = false;
+	for(let i = 0;i < table_ids.length;i++)
+	{
+		if((moveInput === table_ids[i]) && (board_state[i] === -1))
+		{
+			valid = true;
+			moveIndex = i;
+		}
+	}
+
+	// Alert and return if input was invalid
+	if(valid == false)
+	{
+		alert("Invalid input");
+		return;
+	}
+
+	// If input was valid, update the board
+	if(this.turn == 1)
+	{
+		// If it is player 1's turn, update board state and appearance with a 1 and an X
+		board_state[moveIndex] = 1;
+		document.getElementById(moveInput).innerHTML = "X";
+
+		// Check if player 1 won by checking all win conditions
+		if((board_state[0] == 1 && board_state[1] == 1 && board_state[2] == 1) ||
+				(board_state[3] == 1 && board_state[4] == 1 && board_state[5] == 1) ||
+				(board_state[6] == 1 && board_state[7] == 1 && board_state[8] == 1) ||
+				(board_state[0] == 1 && board_state[3] == 1 && board_state[6] == 1) ||
+				(board_state[1] == 1 && board_state[4] == 1 && board_state[7] == 1) ||
+				(board_state[2] == 1 && board_state[5] == 1 && board_state[8] == 1) ||
+				(board_state[0] == 1 && board_state[4] == 1 && board_state[8] == 1) ||
+				(board_state[2] == 1 && board_state[4] == 1 && board_state[6] == 1))
+		{
+			// If player 1 has won, alert a win message and reset the board
+			winMessage = winMessage.concat(player1.value);
+			alert(winMessage);
+			reset_play();
+			return;
+		}
+
+		// Set the turn to O
+		turnText.innerHTML = "Turn for: <b>O</b>";
+	}
+	else
+	{
+		// If it is player 2's turn, update board state and appearance with a 0 and an O
+		board_state[moveIndex] = 0;
+		document.getElementById(moveInput).innerHTML = "O";
+
+		// Check if player 2 won by checking all win conditions
+		if((board_state[0] == 0 && board_state[1] == 0 && board_state[2] == 0) ||
+				(board_state[3] == 0 && board_state[4] == 0 && board_state[5] == 0) ||
+				(board_state[6] == 0 && board_state[7] == 0 && board_state[8] == 0) ||
+				(board_state[0] == 0 && board_state[3] == 0 && board_state[6] == 0) ||
+				(board_state[1] == 0 && board_state[4] == 0 && board_state[7] == 0) ||
+				(board_state[2] == 0 && board_state[5] == 0 && board_state[8] == 0) ||
+				(board_state[0] == 0 && board_state[4] == 0 && board_state[8] == 0) ||
+				(board_state[2] == 0 && board_state[4] == 0 && board_state[6] == 0))
+		{
+			// If player 1 has won, alert a win message and reset the board
+			winMessage = winMessage.concat(player2.value);
+			alert(winMessage);
+			reset_play();
+			return;
+		}
+
+		// Set the turn to X
+		turnText.innerHTML = "Turn for: <b>X</b>";
+	}
+
+	// Toggle the turn variable
+	toggle_move();
 }
 
 /*
