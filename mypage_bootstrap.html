@@ -18,6 +18,9 @@
 		<!-- Latest compiled JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
+		<!-- My JavaScript functions -->
+		<script src="./manage-cards.js"></script>
+
 		<!-- Navigation Bar -->
 		<nav class="navbar navbar-expand-sm bg-info navbar-dark">
 			<ul class="navbar-nav">
@@ -103,26 +106,27 @@
 			<div class="card-group">
 				<div class="card" id="interest1">
 					<img class="card-img-top" src="https://cdn4.iconfinder.com/data/icons/technology-83/1000/embedded_device_embedded_system_internet_embedding_embedded_systems_iot_embedded-512.png" alt="img">
-					<button type="button" class="btn btn-info" onClick="addCard("interest1")">Add Tweet</button>
+					<button type="button" class="btn btn-info" onClick="addCard('interest1body')">Add Tweet</button>
 					<div class="card-body" id="interest1body">
-						<h5 class="card-title">Embedded_Systems/Digital Design</h5>
-						<p class="card-text">I like digital design because it is interesting how much you can do with a few simple blocks.</p>
+						<!-- <div class="card">
+							<img class="card-img-top" src="https://cdn2.iconfinder.com/data/icons/social-media-square-set/960/Twitter_Sq-512.png" alt="Twitter Logo">
+						  <div class="card-body">
+						    <h5 class="card-title text-right">Tweet</h5>
+						    <p class="card-text text-right">Sample tweet will go here.</p>
+						  </div>
+						</div> -->
 					</div>
 				</div>
 				<div class="card" id="interest2">
 					<img class="card-img-top" src="https://cdn.iconscout.com/icon/premium/png-256-thumb/entrepreneur-1750968-1489232.png" alt="img">
-					<button type="button" class="btn btn-info" onClick="addCard("interest2")">Add Tweet</button>
+					<button type="button" class="btn btn-info" onClick="addCard('interest2body')">Add Tweet</button>
 					<div class="card-body" id="interest2body">
-						<h5 class="card-title">Entrepreneurship</h5>
-						<p class="card-text">I like entrepreneurship because you get to learn about so many different things to get everything done.</p>
 					</div>
 				</div>
 				<div class="card" id="interest3">
 					<img class="card-img-top" src="https://cdn4.iconfinder.com/data/icons/hobbies-and-pastimes/128/8-512.png" alt="img">
-					<button type="button" class="btn btn-info" onClick="addCard("interest3")">Add Tweet</button>
-					<div class="card-body" id="interest2body">
-						<h5 class="card-title">Video Games</h5>
-						<p class="card-text">I like video games because they let you experience things you can't do in real life.</p>
+					<button type="button" class="btn btn-info" onClick="addCard('interest3body')">Add Tweet</button>
+					<div class="card-body" id="interest3body">
 					</div>
 				</div>
 			</div>
